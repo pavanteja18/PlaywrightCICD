@@ -25,6 +25,10 @@ export default defineConfig({
   reporter: [["list"]],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
+    launchOptions: {
+      slowMo: 1500,
+    },
+
     headless: false,
     /* Base URL to use in actions like `await page.goto('')`. */
     // baseURL: 'http://localhost:3000',
@@ -37,7 +41,8 @@ export default defineConfig({
   projects: [
     {
       name: "chromium",
-      use: { ...devices["Desktop Chrome"] },
+
+      use: { video: "on", screenshot: "on", ...devices["Desktop Chrome"] },
     },
 
     {
